@@ -8,13 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
 
-    override func viewDidLoad() {
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var lblName: UILabel!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func btnSaveClick(_ sender: UIButton)
+    {
+        UserDefaults.standard.set(txtName.text, forKey: "name")
+    }
+    
+    @IBAction func btnFetchClick(_ sender: UIButton)
+    {
+        let ud=UserDefaults.standard
+        let name=ud.string(forKey: "name")
+        
+        lblName.text=name
+    }
 }
 
